@@ -2,7 +2,7 @@
 
 Simple project for experimenting with SignalR communication between seperate .NET projects.
 
-A console application calculates prime numbers using the Sieve of Eratosthenes method. It then uses SignalR to stream each prime to an ASP.NET Core Razor page for displaying.
+A console application calculates prime numbers using the Sieve of Eratosthenes method. It then uses SignalR to stream each prime to an ASP.NET Core Razor pages web app project for displaying.
 
 The web app contains the SignalR hub and displays the prime number results in real time as they are received.
 
