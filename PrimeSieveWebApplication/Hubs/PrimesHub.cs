@@ -8,5 +8,10 @@ namespace PrimeSieveWebApplication.Hubs
         {
             await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
+
+        public async Task SendPrimeSieveResults(string result)
+        {
+            await Clients.All.SendAsync("ReceivePrimeSieveResults", result);
+        }
     }
 }

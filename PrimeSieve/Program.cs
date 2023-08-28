@@ -5,7 +5,7 @@ namespace PrimeSieve
     internal class Program
     {
         // Sieve of Eratosthenes
-        // https://gist.github.com/mcmullm2-dcu/648f08f3c4e96e368cbf7f4c47e0cb74
+        // Code source: https://gist.github.com/mcmullm2-dcu/648f08f3c4e96e368cbf7f4c47e0cb74
 
         //const string SIGNALR_ENDPOINT = "http://localhost:5049/primesHub";
         const string SIGNALR_ENDPOINT = "https://localhost:7159/primesHub";
@@ -19,14 +19,14 @@ namespace PrimeSieve
             // Start the connection
             await connection.StartAsync();
 
-            await connection.InvokeAsync("SendMessage", "ConsoleApp", "Hello from the console app2!");
+            await connection.InvokeAsync("SendMessage", "ConsoleApp", "Hello from the console app!");
 
-            //RunSieve();
+            await RunSieveAsync(connection);
         }
 
-        public static void RunSieve()
+        public static async Task RunSieveAsync(HubConnection connection)
         {
-            const int MAX = 100;
+            const int MAX = 100000;
             // Create an array of boolean values indicating whether a number is prime.
             // Start by assuming all numbers are prime by setting them to true.
             bool[] primes = new bool[MAX + 1];
@@ -56,11 +56,14 @@ namespace PrimeSieve
                 if (primes[i - 1])
                 {
                     Console.WriteLine(i);
+                    await connection.InvokeAsync("SendPrimeSieveResults", i.ToString());
                     count++;
                 }
             }
 
-            Console.WriteLine($"There are {count} primes up to {MAX}");
+            var endResult = $"There are {count} primes up to {MAX}";
+            Console.WriteLine(endResult);
+            await connection.InvokeAsync("SendPrimeSieveResults", endResult);
         }
     }
 }

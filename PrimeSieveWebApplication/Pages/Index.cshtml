@@ -1,4 +1,10 @@
 ﻿@page
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>@ViewData["Title"]</h1>
+
+<h3>Default SignalR chat app demo.</h3>
 <div class="container">
     <div class="row p-1">
         <div class="col-1">User</div>
@@ -25,4 +31,4 @@
     </div>
 </div>
 <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
-<script src="~/js/primes.js"></script>
+<script src="~/js/index.js"></script>

@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace PrimeSieveWebApplication.Pages
 {
-    public class PrivacyModel : PageModel
+    public class PrimeSieveModel : PageModel
     {
-        private readonly ILogger<PrivacyModel> _logger;
+        private readonly ILogger<PrimeSieveModel> _logger;
 
-        public PrivacyModel(ILogger<PrivacyModel> logger)
+        public PrimeSieveModel(ILogger<PrimeSieveModel> logger)
         {
             _logger = logger;
         }
